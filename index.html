@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Noble Consults - Website Speed Optimization</title>
+  <style>
+    /* Reset & base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f7f9fc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: #1a73e8;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .cta-section {
+      margin: 2rem 0;
+    }
+    .cta-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    .cta-section p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: #666;
+    }
+    .whatsapp-btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      color: #fff;
+      background-color: #25d366;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .whatsapp-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(37, 211, 102, 0.8);
+    }
+    .whatsapp-btn::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(37,211,102,0.5), transparent 70%);
+      animation: glow 2s infinite;
+      opacity: 0;
+    }
+    @keyframes glow {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+    .contact-info {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: #555;
+    }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Noble Consults</h1>
+    <p>Premium Website Speed Optimization Service</p>
+  </header>
+  <div class="container">
+    <section class="hero">
+      <h2>Boost Your Website's Performance</h2>
+      <p>Improve SEO, enhance user experience, and increase conversions with our professional site speed optimization service.</p>
+    </section>
+    <section class="cta-section">
+      <h2>Get Started Today!</h2>
+      <p>Contact us to get a free speed audit and see how we can accelerate your website.</p>
+      <!-- WhatsApp Button -->
+      <a href="https://wa.me/2348063792334" class="whatsapp-btn" target="_blank">Chat on WhatsApp</a>
+      <div class="contact-info">
+        WhatsApp: 08063792334
+      </div>
+    </section>
+  </div>
+  <footer>
+    &copy; 2025 Noble Consults. All rights reserved.
+  </footer>
+</body>
+</html>

@@ -8,11 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
   <style>
     /* Reset */
-    * {
-      margin: 0; 
-      padding: 0; 
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #333;
@@ -21,289 +17,143 @@
     }
     /* Fixed Header with Text Logo */
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      z-index: 100;
-      padding: 0.5rem 1rem;
-      display: flex;
-      align-items: center;
+      position: fixed; top: 0; left: 0; width: 100%;
+      background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      z-index: 100; padding: 0.5rem 1rem;
+      display: flex; align-items: center;
     }
     header .logo h1 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.8rem;
-      color: #0a53b1;
-      font-weight: 700;
-      letter-spacing: 2px;
-      margin: 0;
+      font-size: 1.8rem; color: #0a53b1;
+      font-weight: 700; letter-spacing: 2px; margin: 0;
     }
-    header .logo h1 span {
-      color: #1a73e8;
-    }
+    header .logo h1 span { color: #1a73e8; }
     /* Spacer for Fixed Header */
-    .spacer {
-      height: 60px;
-    }
-    /* Smooth fade-in animation for sections */
+    .spacer { height: 60px; }
+    /* Fade in animation for sections */
     section {
-      opacity: 0;
-      transform: translateY(30px);
+      opacity: 0; transform: translateY(30px);
       transition: all 0.8s ease-in-out;
-      padding: 4rem 1rem;
-      max-width: 1200px;
-      margin: 0 auto;
+      padding: 4rem 1rem; max-width: 1200px; margin: 0 auto;
     }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    /* Hero Section */
+    section.visible { opacity: 1; transform: translateY(0); }
+    /* Hero Section with Background Slideshow */
     .hero {
-      background: linear-gradient(120deg, #1a73e8, #0a53b1);
-      color: #fff;
-      text-align: center;
-      padding: 6rem 1rem;
-      position: relative;
-      overflow: hidden;
+      position: relative; height: 100vh; color: #fff;
+      text-align: center; overflow: hidden;
     }
+    /* Background Slideshow Container */
+    .hero-bg {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%; z-index: 1;
+    }
+    .hero-bg .slide {
+      position: absolute; width: 100%; height: 100%;
+      background-size: cover; background-position: center;
+      opacity: 0; animation: fade 12s infinite;
+    }
+    /* Three slides using Unsplash random images (you can adjust the queries) */
+    .slide1 { background-image: url('https://source.unsplash.com/1600x900/?website,speed'); animation-delay: 0s; }
+    .slide2 { background-image: url('https://source.unsplash.com/1600x900/?seo,optimization'); animation-delay: 4s; }
+    .slide3 { background-image: url('https://source.unsplash.com/1600x900/?performance,web'); animation-delay: 8s; }
+    @keyframes fade {
+      0%, 33.33% { opacity: 1; } 44.44%, 100% { opacity: 0; }
+    }
+    /* Hero Content */
     .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 700px;
-      margin: 0 auto;
+      position: relative; z-index: 2; max-width: 700px; margin: 0 auto; padding: 2rem;
+      background: rgba(0, 0, 0, 0.35); border-radius: 8px;
     }
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
+    .hero-content h1 { font-size: 3rem; margin-bottom: 1rem; }
+    .hero-content p { font-size: 1.2rem; margin-bottom: 2rem; line-height: 1.5; }
+    .hero-content .hero-cta {
+      display: inline-block; background: #fff; color: #0a53b1;
+      padding: 1rem 2rem; border-radius: 50px; font-weight: 600;
+      text-decoration: none; transition: background 0.3s, color 0.3s;
     }
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      line-height: 1.5;
-    }
-    .hero .hero-cta {
-      display: inline-block;
-      background: #fff;
-      color: #0a53b1;
-      padding: 1rem 2rem;
-      border-radius: 50px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.3s ease, color 0.3s ease;
-      vertical-align: middle;
-    }
-    .hero .hero-cta:hover {
-      background: #0a53b1;
-      color: #fff;
-    }
-    /* YouTube Video Embed in Hero */
-    .hero-video {
-      position: absolute;
-      top: 50%;
-      right: 2%;
-      transform: translateY(-50%);
-      width: 40%;
-      max-width: 500px;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-      z-index: 1;
-    }
-    @media (max-width: 768px) {
-      .hero-video {
-        display: none;
-      }
-    }
+    .hero-content .hero-cta:hover { background: #0a53b1; color: #fff; }
     /* Before & After Section */
     .before-after {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      text-align: center;
+      display: flex; flex-wrap: wrap; gap: 2rem;
+      justify-content: center; text-align: center;
     }
     .before-after h2 {
-      width: 100%;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #0a53b1;
+      width: 100%; font-size: 2rem; margin-bottom: 1rem; color: #0a53b1;
     }
     .before-after p {
-      width: 100%;
-      font-size: 1rem;
-      margin-bottom: 2rem;
-      color: #555;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.5;
+      width: 100%; font-size: 1rem; margin-bottom: 2rem;
+      color: #555; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.5;
     }
     .image-container {
-      flex: 1 1 300px;
-      max-width: 400px;
-      position: relative;
+      flex: 1 1 300px; max-width: 400px; position: relative;
     }
     .image-container img {
-      width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
-    .image-label {
-      margin-top: 0.5rem;
-      font-weight: 600;
-      color: #333;
-    }
+    .image-label { margin-top: 0.5rem; font-weight: 600; color: #333; }
     /* Services Section */
-    .services {
-      text-align: center;
-    }
-    .services h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #0a53b1;
-    }
+    .services { text-align: center; }
+    .services h2 { font-size: 2rem; margin-bottom: 1rem; color: #0a53b1; }
     .services p {
-      font-size: 1rem;
-      max-width: 700px;
-      margin: 0 auto 2rem auto;
-      line-height: 1.5;
-      color: #555;
+      font-size: 1rem; max-width: 700px; margin: 0 auto 2rem auto; line-height: 1.5; color: #555;
     }
     .service-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
+      display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;
     }
     .service-item {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      padding: 2rem;
-      flex: 1 1 250px;
-      max-width: 300px;
-      text-align: left;
-      position: relative;
+      background: #fff; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      padding: 2rem; flex: 1 1 250px; max-width: 300px; text-align: left; position: relative;
     }
-    .service-item img {
-      width: 40px;
-      height: 40px;
-      margin-bottom: 1rem;
-    }
-    .service-item h3 {
-      margin-bottom: 1rem;
-      font-size: 1.2rem;
-      color: #0a53b1;
-    }
-    .service-item p {
-      font-size: 0.95rem;
-      line-height: 1.4;
-      color: #666;
-    }
+    /* Service icons using clear icons from Icons8 */
+    .service-item img { width: 40px; height: 40px; margin-bottom: 1rem; }
+    .service-item h3 { margin-bottom: 1rem; font-size: 1.2rem; color: #0a53b1; }
+    .service-item p { font-size: 0.95rem; line-height: 1.4; color: #666; }
     /* Testimonials Section */
     .testimonials {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      padding: 3rem;
-      text-align: center;
+      background: #fff; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      padding: 3rem; text-align: center;
     }
-    .testimonials h2 {
-      font-size: 2rem;
-      color: #0a53b1;
-      margin-bottom: 1rem;
-    }
+    .testimonials h2 { font-size: 2rem; color: #0a53b1; margin-bottom: 1rem; }
     .testimonial-cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin-top: 2rem;
-      justify-content: center;
+      display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 2rem; justify-content: center;
     }
     .testimonial-card {
-      background: #f5f7fa;
-      border-radius: 8px;
-      padding: 1.5rem;
-      max-width: 300px;
-      flex: 1 1 250px;
-      text-align: left;
+      background: #f5f7fa; border-radius: 8px; padding: 1.5rem;
+      max-width: 300px; flex: 1 1 250px; text-align: left;
     }
-    .testimonial-card p {
-      font-size: 0.95rem;
-      color: #555;
-      margin-bottom: 1rem;
-    }
-    .testimonial-author {
-      font-weight: 600;
-      color: #333;
-    }
+    .testimonial-card p { font-size: 0.95rem; color: #555; margin-bottom: 1rem; }
+    .testimonial-author { font-weight: 600; color: #333; }
     /* CTA Section (WhatsApp) */
-    .cta-section {
-      text-align: center;
-    }
-    .cta-section h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #0a53b1;
-    }
+    .cta-section { text-align: center; }
+    .cta-section h2 { font-size: 2rem; margin-bottom: 1rem; color: #0a53b1; }
     .cta-section p {
-      font-size: 1rem;
-      max-width: 700px;
-      margin: 0 auto 2rem auto;
-      color: #555;
-      line-height: 1.5;
+      font-size: 1rem; max-width: 700px; margin: 0 auto 2rem auto; color: #555; line-height: 1.5;
     }
     .whatsapp-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
-      color: #fff;
-      background-color: #25d366;
-      border: none;
-      border-radius: 50px;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-      position: relative;
-      overflow: hidden;
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      padding: 1rem 2rem; font-size: 1.1rem; color: #fff; background-color: #25d366;
+      border: none; border-radius: 50px; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 1px; transition: box-shadow 0.3s ease, transform 0.3s ease;
+      position: relative; overflow: hidden;
     }
     .whatsapp-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(37, 211, 102, 0.8);
+      transform: scale(1.05); box-shadow: 0 0 20px rgba(37,211,102,0.8);
     }
     .whatsapp-btn::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
+      content: ''; position: absolute; top: -50%; left: -50%;
+      width: 200%; height: 200%;
       background: radial-gradient(circle, rgba(37,211,102,0.5), transparent 70%);
-      animation: glow 2s infinite;
-      opacity: 0;
+      animation: glow 2s infinite; opacity: 0;
     }
-    @keyframes glow {
-      0%, 100% { opacity: 0; }
-      50% { opacity: 1; }
-    }
+    @keyframes glow { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
     /* Footer */
     footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #777;
+      text-align: center; padding: 2rem; font-size: 0.9rem; color: #777;
     }
     /* Responsive */
     @media (max-width: 768px) {
       .before-after, .service-list, .testimonial-cards {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column; align-items: center;
       }
     }
   </style>
@@ -318,33 +168,32 @@
   </header>
   <div class="spacer"></div>
 
-  <!-- Hero Section -->
+  <!-- Hero Section with Background Slideshow -->
   <section class="hero visible">
+    <!-- Background Slideshow -->
+    <div class="hero-bg">
+      <div class="slide slide1"></div>
+      <div class="slide slide2"></div>
+      <div class="slide slide3"></div>
+    </div>
+    <!-- Hero Content -->
     <div class="hero-content">
       <h1>Noble Consults</h1>
-      <p>Skyrocket your website’s performance, boost your SEO, and keep your customers happy with blazing-fast page load times.</p>
+      <p>Skyrocket your website’s performance, boost your SEO, and deliver real results with optimized visuals and better statistics.</p>
       <a href="#before-after" class="hero-cta">See the Difference</a>
-    </div>
-    <!-- YouTube Video Embed -->
-    <div class="hero-video">
-      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/vS18bonRJgI?autoplay=1&mute=1&loop=1&playlist=vS18bonRJgI" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen>
-      </iframe>
     </div>
   </section>
 
   <!-- Before & After Section -->
   <section id="before-after" class="before-after">
     <h2>Before & After</h2>
-    <p>See how we transform sluggish websites into lightning-fast experiences. (Replace with actual PageSpeed Insights screenshots)</p>
+    <p>Witness the transformation—see how optimization leads to clearer, faster-loading pages and improved metrics.</p>
     <div class="image-container">
-      <img src="before.jpg" alt="Before Optimization" />
+      <img src="https://source.unsplash.com/400x300/?slow,website" alt="Before Optimization" />
       <div class="image-label">Before</div>
     </div>
     <div class="image-container">
-      <img src="afterr.jpg" alt="After Optimization" />
+      <img src="https://source.unsplash.com/400x300/?fast,website" alt="After Optimization" />
       <div class="image-label">After</div>
     </div>
   </section>
@@ -352,27 +201,27 @@
   <!-- Services Section -->
   <section class="services">
     <h2>Our Speed Optimization Services</h2>
-    <p>We cover every aspect of optimization—from detailed audits to image, code, and server improvements, ensuring a faster, smoother user experience.</p>
+    <p>From comprehensive audits to fine-tuning server setups, our services ensure your website loads fast and ranks high.</p>
     <div class="service-list">
       <div class="service-item">
-        <img src="audit-icon.png" alt="Audit Icon" />
+        <img src="https://img.icons8.com/fluency/48/000000/analysis.png" alt="Audit Icon" />
         <h3>Comprehensive Audit</h3>
-        <p>We run detailed diagnostics to uncover every performance bottleneck and craft a custom plan for your site.</p>
+        <p>Identify bottlenecks and tailor a custom optimization plan for your site.</p>
       </div>
       <div class="service-item">
-        <img src="optimize-icon.png" alt="Optimization Icon" />
+        <img src="https://img.icons8.com/fluency/48/000000/code.png" alt="Code Optimization Icon" />
         <h3>Image & Code Optimization</h3>
-        <p>We optimize images, CSS, and JavaScript to reduce load times while maintaining quality.</p>
+        <p>Reduce file sizes and streamline code to improve load times without compromising quality.</p>
       </div>
       <div class="service-item">
-        <img src="server-icon.png" alt="Server Icon" />
+        <img src="https://img.icons8.com/fluency/48/000000/server.png" alt="Server & Caching Icon" />
         <h3>Server & Caching Setup</h3>
-        <p>We configure caching and server settings for optimal performance during traffic spikes.</p>
+        <p>Configure caching and server settings to handle high traffic efficiently.</p>
       </div>
       <div class="service-item">
-        <img src="webvitals-icon.png" alt="Core Web Vitals Icon" />
+        <img src="https://img.icons8.com/fluency/48/000000/speed.png" alt="Core Web Vitals Icon" />
         <h3>Core Web Vitals Improvement</h3>
-        <p>We fine-tune your site to meet Google’s Core Web Vitals benchmarks, boosting your rankings.</p>
+        <p>Meet Google’s performance benchmarks to boost SEO and user satisfaction.</p>
       </div>
     </div>
   </section>
@@ -382,15 +231,15 @@
     <h2>Testimonials</h2>
     <div class="testimonial-cards">
       <div class="testimonial-card">
-        <p>"Our website's loading speed dropped from 6 seconds to under 2 seconds, boosting our sales by 25% in a month!"</p>
+        <p>"Our page load time dropped drastically after optimization, leading to a 25% boost in conversions!"</p>
         <div class="testimonial-author">— Sarah, eCommerce Owner</div>
       </div>
       <div class="testimonial-card">
-        <p>"We saw an immediate boost in our SEO rankings after the optimization. Noble Consults was fast, efficient, and professional."</p>
+        <p>"Noble Consults helped us rank higher and deliver a seamless user experience on all devices."</p>
         <div class="testimonial-author">— Michael, SaaS Founder</div>
       </div>
       <div class="testimonial-card">
-        <p>"Thanks to Noble Consults, our bounce rate dropped significantly and user engagement soared."</p>
+        <p>"With improved Core Web Vitals and faster load times, our bounce rate dropped significantly."</p>
         <div class="testimonial-author">— Emily, Blog Editor</div>
       </div>
     </div>
@@ -399,7 +248,7 @@
   <!-- CTA Section -->
   <section class="cta-section">
     <h2>Ready to Speed Up Your Site?</h2>
-    <p>Don’t let a slow site hold your business back. Contact us today for a free speed audit and start your journey to a faster website!</p>
+    <p>Contact us today for a free speed audit and start your journey toward a high-performing website.</p>
     <a href="https://wa.me/2348063792334" target="_blank" class="whatsapp-btn">
       <!-- Inline WhatsApp Icon SVG -->
       <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg">
@@ -417,16 +266,14 @@
     // Fade in sections on scroll using IntersectionObserver
     const sections = document.querySelectorAll('section');
     const options = { threshold: 0.2 };
-
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
-        if(entry.isIntersecting){
+        if (entry.isIntersecting) {
           entry.target.classList.add('visible');
           observer.unobserve(entry.target);
         }
       });
     }, options);
-
     sections.forEach(section => observer.observe(section));
   </script>
 </body>

@@ -1,61 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Noble Consults - Website Speed Optimization</title>
   <style>
-    /* Reset & base styles */
+    /* Reset */
     * {
-      margin: 0;
-      padding: 0;
+      margin: 0; 
+      padding: 0; 
       box-sizing: border-box;
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
       color: #333;
-      background: #f7f9fc;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
+      background: #f5f7fa;
+      scroll-behavior: smooth;
     }
-    header {
+
+    /* Smooth fade-in animation for sections */
+    section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-in-out;
+      padding: 4rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(120deg, #1a73e8, #0a53b1);
+      color: #fff;
       text-align: center;
-      margin-bottom: 2rem;
+      padding: 6rem 1rem;
     }
-    header h1 {
-      font-size: 2.5rem;
-      color: #1a73e8;
-      margin-bottom: 0.5rem;
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
     }
-    header p {
+    .hero p {
       font-size: 1.2rem;
+      margin-bottom: 2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+    .hero .hero-cta {
+      display: inline-block;
+      background: #fff;
+      color: #0a53b1;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .hero .hero-cta:hover {
+      background: #0a53b1;
+      color: #fff;
+    }
+
+    /* Before & After Section */
+    .before-after {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      text-align: center;
+    }
+    .before-after h2 {
+      width: 100%;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #0a53b1;
+    }
+    .before-after p {
+      width: 100%;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      color: #555;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+    .image-container {
+      flex: 1 1 300px;
+      max-width: 400px;
+      position: relative;
+    }
+    .image-container img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .image-label {
+      margin-top: 0.5rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    /* Services Section */
+    .services {
+      text-align: center;
+    }
+    .services h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #0a53b1;
+    }
+    .services p {
+      font-size: 1rem;
+      max-width: 700px;
+      margin: 0 auto 2rem auto;
+      line-height: 1.5;
       color: #555;
     }
-    .container {
-      width: 90%;
-      max-width: 1000px;
+    .service-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .service-item {
       background: #fff;
       border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
       padding: 2rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      flex: 1 1 250px;
+      max-width: 300px;
+      text-align: left;
+    }
+    .service-item h3 {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      color: #0a53b1;
+    }
+    .service-item p {
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: #666;
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      padding: 3rem;
       text-align: center;
     }
+    .testimonials h2 {
+      font-size: 2rem;
+      color: #0a53b1;
+      margin-bottom: 1rem;
+    }
+    .testimonial-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+      justify-content: center;
+    }
+    .testimonial-card {
+      background: #f5f7fa;
+      border-radius: 8px;
+      padding: 1.5rem;
+      max-width: 300px;
+      flex: 1 1 250px;
+      text-align: left;
+    }
+    .testimonial-card p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+    .testimonial-author {
+      font-weight: 600;
+      color: #333;
+    }
+
+    /* CTA Section (WhatsApp) */
     .cta-section {
-      margin: 2rem 0;
+      text-align: center;
     }
     .cta-section h2 {
       font-size: 2rem;
       margin-bottom: 1rem;
-      color: #333;
+      color: #0a53b1;
     }
     .cta-section p {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-      color: #666;
+      font-size: 1rem;
+      max-width: 700px;
+      margin: 0 auto 2rem auto;
+      color: #555;
+      line-height: 1.5;
     }
     .whatsapp-btn {
       display: inline-block;
@@ -91,40 +236,131 @@
       0%, 100% { opacity: 0; }
       50% { opacity: 1; }
     }
-    .contact-info {
-      margin-top: 1rem;
-      font-size: 1rem;
-      color: #555;
-    }
+
+    /* Footer */
     footer {
-      margin-top: 2rem;
+      text-align: center;
+      padding: 2rem;
       font-size: 0.9rem;
       color: #777;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .before-after {
+        flex-direction: column;
+        align-items: center;
+      }
+      .service-list {
+        flex-direction: column;
+        align-items: center;
+      }
+      .testimonial-cards {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
+
+  <!-- Hero Section -->
+  <section class="hero visible">
     <h1>Noble Consults</h1>
-    <p>Premium Website Speed Optimization Service</p>
-  </header>
-  <div class="container">
-    <section class="hero">
-      <h2>Boost Your Website's Performance</h2>
-      <p>Improve SEO, enhance user experience, and increase conversions with our professional site speed optimization service.</p>
-    </section>
-    <section class="cta-section">
-      <h2>Get Started Today!</h2>
-      <p>Contact us to get a free speed audit and see how we can accelerate your website.</p>
-      <!-- WhatsApp Button -->
-      <a href="https://wa.me/2348063792334" class="whatsapp-btn" target="_blank">Chat on WhatsApp</a>
-      <div class="contact-info">
-        WhatsApp: 08063792334
+    <p>Skyrocket your website’s performance, boost your SEO, and keep your customers happy with blazing-fast page load times.</p>
+    <a href="#before-after" class="hero-cta">See the Difference</a>
+  </section>
+
+  <!-- Before & After Section -->
+  <section id="before-after" class="before-after">
+    <h2>Before & After</h2>
+    <p>Check out real examples of how we transform sluggish websites into lightning-fast experiences. The images below are placeholders—replace them with actual PageSpeed Insights screenshots.</p>
+    <div class="image-container">
+      <img src="before.jpg" alt="Before Optimization" />
+      <div class="image-label">Before</div>
+    </div>
+    <div class="image-container">
+      <img src="after.jpg" alt="After Optimization" />
+      <div class="image-label">After</div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services">
+    <h2>Our Speed Optimization Services</h2>
+    <p>From minifying code and optimizing images to fine-tuning your server setup, we use proven techniques that guarantee faster load times and better user engagement.</p>
+    <div class="service-list">
+      <div class="service-item">
+        <h3>Comprehensive Audit</h3>
+        <p>We run detailed diagnostics to find every performance bottleneck and create a custom plan for your site.</p>
       </div>
-    </section>
-  </div>
+      <div class="service-item">
+        <h3>Image & Code Optimization</h3>
+        <p>We compress and optimize images, CSS, JavaScript, and more, without compromising quality.</p>
+      </div>
+      <div class="service-item">
+        <h3>Server & Caching Setup</h3>
+        <p>We configure caching and server settings to reduce load times and handle traffic spikes seamlessly.</p>
+      </div>
+      <div class="service-item">
+        <h3>Core Web Vitals Improvement</h3>
+        <p>We optimize LCP, FID, and CLS to ensure your site meets Google’s Core Web Vitals benchmarks.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <h2>Testimonials</h2>
+    <div class="testimonial-cards">
+      <div class="testimonial-card">
+        <p>"Our website's loading speed went from 6 seconds to under 2 seconds. Noble Consults helped us increase sales by 25% in a month!"</p>
+        <div class="testimonial-author">— Sarah, eCommerce Owner</div>
+      </div>
+      <div class="testimonial-card">
+        <p>"We saw an immediate boost in our SEO rankings after the optimization. The team was fast, efficient, and very professional."</p>
+        <div class="testimonial-author">— Michael, SaaS Founder</div>
+      </div>
+      <div class="testimonial-card">
+        <p>"Noble Consults delivered on their promise. Our bounce rate dropped significantly, and user engagement soared."</p>
+        <div class="testimonial-author">— Emily, Blog Editor</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <h2>Ready to Speed Up Your Site?</h2>
+    <p>Don’t let a slow site hurt your business. Contact us today to get a free speed audit or to make a payment and start your optimization journey!</p>
+    <a href="https://wa.me/2348063792334" target="_blank" class="whatsapp-btn">
+      Chat on WhatsApp
+    </a>
+    <div style="margin-top: 1rem; color: #666;">WhatsApp: 08063792334</div>
+  </section>
+
   <footer>
     &copy; 2025 Noble Consults. All rights reserved.
   </footer>
+
+  <script>
+    // Simple script to fade in sections on scroll
+    const sections = document.querySelectorAll('section');
+    const options = {
+      threshold: 0.2
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, options);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
 </body>
 </html>
